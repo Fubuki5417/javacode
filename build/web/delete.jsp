@@ -23,6 +23,5 @@
                 <input type="submit" name="confirm" value="No">
             </form>
         </c:if>
-
     </body>
 </html>

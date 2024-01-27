@@ -15,17 +15,17 @@
         <title>JSP Page</title>
     </head>
     <body>
-    <form action="edit" method="post">
-        <c:if test="${not empty requestScope.rollNo}">
-            <input type="hidden" name="id" value="${requestScope.rollNo}">
-        </c:if>
-        RollNo: <input type="text" name="rollno">
-        <br>
-        Name: <input type="text" name="name">
-        <br>
-        Mark: <input type="text" name="mark">
-        <br>
-        <input type="submit" value="edit">
-    </form>
-</body>
+        <form action="edit" method="post">
+            <c:if test="${not empty requestScope.rollno}">
+                <input type="hidden" name="rollno" value="${requestScope.rollno}">
+            </c:if>
+            RollNo: <input type="text" name="rollno">
+            <br>
+            Name: <input type="text" name="name">
+            <br>
+            Mark: <input type="text" name="mark">
+            <br>
+            <input type="submit" value="Edit">
+        </form>
+    </body>
 </html>

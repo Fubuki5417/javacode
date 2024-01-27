@@ -27,26 +27,28 @@ public class StudentDAO extends DBContext {
 
         return list;
     }
-    
-    public void insertStudent (Student student) throws SQLException {
+
+    public void insertStudent(Student student) throws SQLException {
         String sql = "INSERT [dbo].[Student] ([rollno], [name], [mark]) VALUES (?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setString (1, student.getRollNo());
+        statement.setString(1, student.getRollNo());
         statement.setString(2, student.getName());
         statement.setFloat(3, student.getMark());
 
         statement.executeUpdate();
     }
-    
-     public void updateStudent(Student student) throws SQLException {
+
+    public void updateStudent(Student student) throws SQLException {
         String sql = "UPDATE [Student] SET [rollno] = ?, [name] = ?, [mark] = ? WHERE [rollno] = ?";
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString (1, student.getRollNo());
         statement.setString(2, student.getName());
         statement.setFloat(3, student.getMark());
+        statement.setString (4, student.getRollNo());
 
         statement.executeUpdate();
     }
+
 
     public static void main(String[] args) {
         StudentDAO sd = new StudentDAO();
@@ -54,7 +56,7 @@ public class StudentDAO extends DBContext {
         System.out.println(li.get(0).getRollNo());
         System.out.println(li.get(0).getName());
         System.out.println(li.get(0).getMark());
-        
+
     }
 
 }
