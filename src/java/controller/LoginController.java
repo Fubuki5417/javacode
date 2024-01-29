@@ -76,7 +76,7 @@ public class LoginController extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/list");
         }
         else {
-            response.sendRedirect("login.jsp");    
+            response.sendRedirect("login");    
             
         }
     }
