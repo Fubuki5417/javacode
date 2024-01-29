@@ -15,13 +15,17 @@
         <title>Delete</title>
     </head>
     <body>
-        <c:if test="${not empty requestScope.rollNo}">                       
-            <form action="delete" method="post">
-                <input type="hidden" name="rollno" value="${requestScope.rollNo}">
-                <h1>Are you sure you want to delete this person's information?</h1>
-                <input type="submit" name="confirm" value="Yes">
-                <input type="submit" name="confirm" value="No">
-            </form>
-        </c:if>
+               <c:set var="rollNo" value="${requestScope.rollNo}" />
+    <h1>Are you sure you want to delete this information?</h1>
+    <form action="delete" method="post">
+        <input type="hidden" name="rollNo" value="${rollNo}">
+        <input type="hidden" name="isDelete" value="1">
+        <input type="submit" value="Yes" style="padding: 5px 20px">
+    </form>
+    <form action="delete" method="post">
+        <input type="hidden" name="rollNo" value="${rollNo}">
+        <input type="hidden" name="isDelete" value="0">
+        <input type="submit" value="No" style="padding: 5px 20px">
+    </form>
     </body>
 </html>

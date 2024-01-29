@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Student;
 
 public class StudentDAO extends DBContext {
@@ -18,11 +20,11 @@ public class StudentDAO extends DBContext {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                Student s = new Student(rs.getString("rollNo"), rs.getString("name"), rs.getFloat("mark"));
+                Student s = new Student(rs.getString("rollno"), rs.getString("name"), rs.getFloat("mark"));
                 list.add(s);
             }
-        } catch (SQLException e) {
-            System.out.println(e);
+        } catch (SQLException ex) {
+            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return list;
@@ -48,7 +50,14 @@ public class StudentDAO extends DBContext {
 
         statement.executeUpdate();
     }
+    
+    public void deleteStudent(String rollno) throws SQLException {
+        String sql = "DELETE FROM [Student] WHERE [rollno] = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, rollno);
 
+        statement.executeUpdate();
+    }
 
     public static void main(String[] args) {
         StudentDAO sd = new StudentDAO();

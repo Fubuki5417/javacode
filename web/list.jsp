@@ -18,9 +18,6 @@
         <title>List</title>
     </head>
     <body>
-        <form action="insert">
-            <input type="submit" value="insert">
-        </form>
         <table border="1">
             <thead>
             <th>Roll No</th>
@@ -42,5 +39,11 @@
             </c:forEach>
         </tbody>
     </table>
+    <form action="insert">
+        <input type="submit" value="insert">
+    </form>
+    <form action="logout" method="get">
+        <input type="submit" value="Logout">
+    </form>
 </body>
 </html>
